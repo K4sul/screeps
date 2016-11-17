@@ -25,18 +25,22 @@ function spawnUpgrader(spawn)
      return spawn.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader', spawnId: spawn.id});
 }
 
-module.exports.autoSpawn = function (spawn)
-{
-    var harvesters = getRoleCreeps('harvester');
-    if(harvesters.length < 2) {
-        spawnHarvester(spawn);
+function spawnLib() {
+    this.autoSpawn = function (spawn)
+    {
+        var harvesters = getRoleCreeps('harvester');
+        if(harvesters.length < 2) {
+            spawnHarvester(spawn);
+        }
+        var builders = getRoleCreeps('builder');
+        if(builders.length < 2) {
+            spawnBuilder(spawn);
+        }
+        var upgraders = getRoleCreeps('upgrader');
+        if(upgraders.length < 2) {
+            spawnUpgrader(spawn);
+        }
     }
-    var builders = getRoleCreeps('builder');
-    if(builders.length < 2) {
-        spawnBuilder(spawn);
-    }
-    var upgraders = getRoleCreeps('upgrader');
-    if(upgraders.length < 2) {
-        spawnUpgrader(spawn);
-    }
-};
+}
+
+module.exports = spawnLib;

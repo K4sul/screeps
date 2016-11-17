@@ -1,5 +1,4 @@
-var autoSpawn = require('autoSpawn').autoSpawn;
-
+var spawnLib = require('spawnLib');
 
 var roleDict = {
     'harvester': require('role_harvester'),
@@ -15,5 +14,5 @@ module.exports.loop = function () {
         var role = roleDict[creep.memory.role];
         role.run(creep);
     }
-    autoSpawn(Game.spawns.s1);
+    spawnLib.autoSpawn(Game.spawns.s1);
 }
