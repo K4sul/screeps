@@ -18,9 +18,8 @@ function findAccessibleSource(creep)
     return 1;
 }
 
-function harvestLib()
-{
-    this.harvest = function(creep)
+module.exports = {
+    harvest: function(creep)
     {
         var err = 0;
         if(!creep.memory.sourceId) {
@@ -44,6 +43,4 @@ function harvestLib()
             console.log('error finding source to harvest '+creep);
         }
     }
-}
-
-module.exports = harvestLib;
+};

@@ -25,8 +25,8 @@ function spawnUpgrader(spawn)
      return spawn.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader', spawnId: spawn.id});
 }
 
-function spawnLib() {
-    this.autoSpawn = function (spawn)
+module.exports = {
+    autoSpawn: function (spawn)
     {
         var harvesters = getRoleCreeps('harvester');
         if(harvesters.length < 2) {
@@ -41,6 +41,4 @@ function spawnLib() {
             spawnUpgrader(spawn);
         }
     }
-}
-
-module.exports = spawnLib;
+};
