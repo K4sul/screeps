@@ -27,6 +27,11 @@ function spawnBuilder(spawn)
     return spawn.createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
 }
 
+function spawnUpgrader(spawn)
+{
+     return spawn.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+}
+
 function autoSpawn(spawn)
 {
     var harvesters = getRoleCreeps('harvester');
@@ -36,6 +41,10 @@ function autoSpawn(spawn)
     var builders = getRoleCreeps('builder');
     if(builders.length < 2) {
         spawnBuilder(spawn);
+    }
+    var upgraders = getRoleCreeps('upgrader');
+    if(upgraders.length < 2) {
+        spawnUpgrader(spawn);
     }
 }
 
