@@ -8,6 +8,7 @@
  */
 
 var harvestLib = require('harvestLib');
+var transferLib = require('transferLib');
 
 module.exports = {
     run: function(creep) {
@@ -16,10 +17,8 @@ module.exports = {
         if(creep.carry.energy < creep.carryCapacity) {
             harvestLib.harvest(creep);
         }
-        else if(spawn.energy < spawn.energyCapacity) {
-            if(creep.transfer(spawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(spawn);
-            }
+        else {
+            transferLib.transfer(creep);
         }
     }
 };

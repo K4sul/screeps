@@ -36,11 +36,10 @@ module.exports = {
                     creep.memory.pathToSource = Room.serializePath(path);
                     err = creep.moveByPath(path);
                 }
-                console.log('moving '+err);
             }
         }
         else {
-            console.log('error finding source to harvest '+creep);
+            creep.say('no source');
         }
     }
 };
